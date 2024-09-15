@@ -36,9 +36,10 @@ beforeEach(async () => {
           {
             src: path.resolve(__dirname, "../terraform/hetzner_dns/variables.tf"), // Terraform module variables file
             dest: "/hetzner_dns/variables.tf",
-          },          {
-            src: path.resolve(__dirname, "../.github/actions/terraform-apply/mock-terraform.sh"), // Mock Terraform script
-            dest: "/mock-terraform.sh",
+          },          
+          {
+            src: path.resolve(__dirname, "mock-terraform.sh"), // Mock Terraform script
+            dest: "./mock-terraform.sh",
           },
         ],
       },
@@ -54,12 +55,6 @@ afterEach(async () => {
 
 test("test Terraform Deploy Action", async () => {
   const act = new Act(mockGithub.repo.getPath("testCompositeAction"));
-
-  // Set the environment variables for the action
-  act.setEnv(
-    'TERRAFORM_COMMAND',
-    '/mock-terraform.sh',
-  );
 
   const result = await act.runEvent("push");
 
@@ -80,22 +75,27 @@ test("test Terraform Deploy Action", async () => {
     },
     {
       name: "Main Debug - Check Terraform Command",
-      output: expect.stringContaining("Using Terraform command: /mock-terraform.sh"),
+      output: expect.stringContaining("Using Terraform command ./mock-terraform.sh"),
       status: 0,
     },
     {
       name: "Main Terraform Init",
-      output: expect.stringContaining("Mock Terraform init completed"),
+      output: expect.stringContaining("Mock Terraform command: init"),
       status: 0,
     },
     {
       name: "Main Terraform Apply",
-      output: expect.stringContaining("Mock Terraform apply completed"),
+      output: expect.stringContaining("Mock Terraform command: apply"),
       status: 0,
     },
     {
       name: "Main Output DNS Record IDs",
-      output: expect.stringMatching(/::set-output name=dns_record_ids::\[.*\]/),
+      output: expect.any(String),
+      status: 0,
+    },
+    {
+      name: "Main Debug - Check DNS Record IDs",
+      output: expect.stringContaining("DNS Record IDs Mock Terraform command: output"),
       status: 0,
     },
     {

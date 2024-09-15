@@ -15,3 +15,4 @@ jobs:
         with:
           hetzner_token: "test-token"  # Mock token for testing
           domain_name: "example.com"   # Mock domain for testing
+          terraform_command: "./mock-terraform.sh"  # Mock Terraform command for testing

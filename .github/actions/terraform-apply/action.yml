@@ -7,6 +7,10 @@ inputs:
   domain_name:
     description: 'Domain name to manage DNS records for'
     required: true
+  terraform_command:
+    description: 'Terraform command to use'
+    required: false
+    default: 'terraform'
 
 runs:
   using: "composite"
@@ -19,16 +23,18 @@ runs:
 
     - name: Debug - Check Terraform Command
       shell: bash
-      run: 'echo "::notice::Using Terraform command: ${{ env.TERRAFORM_COMMAND:-terraform }}"'
+      env:
+        TERRAFORM_COMMAND: ${{ inputs.terraform_command }}
+      run: echo Using Terraform command $TERRAFORM_COMMAND
 
     - name: Terraform Init
-      run: ${{ env.TERRAFORM_COMMAND:-terraform }} init
+      run: ${{ inputs.terraform_command }} init
       shell: bash
       working-directory: ./
 
     - name: Terraform Apply
       id: apply
-      run: ${{ env.TERRAFORM_COMMAND:-terraform }} apply -auto-approve -input=false
+      run: ${{ inputs.terraform_command }} apply -auto-approve -input=false
       shell: bash
       env:
         TF_VAR_domain_name: ${{ inputs.domain_name }}
@@ -37,6 +43,18 @@ runs:
 
     - name: Output DNS Record IDs
       id: output
-      run: echo "::set-output name=dns_record_ids::$(terraform output -json dns_record_ids)"
+      env:
+        TERRAFORM_COMMAND: ${{ inputs.terraform_command }}
+      run: |
+          # Get the output from the terraform command
+          dns_output=$($TERRAFORM_COMMAND output -json dns_record_ids)
+
+          # Set the output for GitHub Actions
+          echo "::set-output name=dns_record_ids::$dns_output"
       shell: bash
       working-directory: ./
+
+    - name: Debug - Check DNS Record IDs
+      run: echo DNS Record IDs ${{ steps.output.outputs.dns_record_ids }}
+      shell: bash
+
