@@ -1,6 +1,7 @@
 {
   "tests/terraform_apply.test.ts": [
     ".github/actions/terraform-apply/action.yml",
-    ".github/actions/terraform-apply/mock-terraform.sh"
+    ".github/actions/terraform-apply/mock-terraform.sh",
+    "./test/action-test.yml"
   ]
 }

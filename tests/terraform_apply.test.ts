@@ -74,18 +74,6 @@ test("test Terraform Deploy Action", async () => {
       status: 0,
     },
     {
-      name: "Main Output DNS Record IDs",
-      output: expect.any(String),
-      status: 0,
-    },
-    {
-      name: "Main Debug - Check DNS Record IDs",
-      output: expect.stringContaining(
-        "DNS Record IDs Mock Terraform command: output",
-      ),
-      status: 0,
-    },
-    {
       name: "Post Run Terraform Apply Action",
       status: 0,
       output: "",

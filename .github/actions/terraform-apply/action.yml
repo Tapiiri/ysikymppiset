@@ -10,10 +10,17 @@ inputs:
   dns_records_file:
     description: "Path to the DNS records JSON file"
     required: true
+  TF_TOKEN_app_terraform_io:
+    description: "Terraform Cloud API token"
+    required: true
   terraform_command:
     description: "Terraform command to use"
     required: false
     default: "terraform"
+  working_directory:
+    description: "Working directory for Terraform"
+    required: false
+    default: "./"
 
 runs:
   using: "composite"
@@ -33,7 +40,9 @@ runs:
     - name: Terraform Init
       run: ${{ inputs.terraform_command }} init
       shell: bash
-      working-directory: ./
+      env:
+        TF_TOKEN_app_terraform_io: ${{ inputs.TF_TOKEN_app_terraform_io }}
+      working-directory: ${{ inputs.working_directory }}
 
     - name: Terraform Apply
       id: apply
@@ -43,21 +52,5 @@ runs:
         TF_VAR_domain_name: ${{ inputs.domain_name }}
         TF_VAR_hetzner_token: ${{ inputs.hetzner_token }}
         TF_VAR_dns_records_file: ${{ inputs.dns_records_file }}
-      working-directory: ./
-
-    - name: Output DNS Record IDs
-      id: output
-      env:
-        TERRAFORM_COMMAND: ${{ inputs.terraform_command }}
-      run: |
-        # Get the output from the terraform command
-        dns_output=$($TERRAFORM_COMMAND output -json dns_record_ids)
-
-        # Set the output for GitHub Actions
-        echo "::set-output name=dns_record_ids::$dns_output"
-      shell: bash
-      working-directory: ./
-
-    - name: Debug - Check DNS Record IDs
-      run: echo DNS Record IDs ${{ steps.output.outputs.dns_record_ids }}
-      shell: bash
+        TF_TOKEN_app_terraform_io: ${{ inputs.TF_TOKEN_app_terraform_io }}
+      working-directory: ${{ inputs.working_directory }}

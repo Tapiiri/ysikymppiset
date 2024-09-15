@@ -12,5 +12,4 @@ variable "hetzner_token" {
 variable "dns_records_file" {
   description = "Path to the DNS records JSON file."
   type        = string
-  default     = "../../dns_records.json" # Set a default path or override it via inputs
 }

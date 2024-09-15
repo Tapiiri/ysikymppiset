@@ -1,5 +1,15 @@
+terraform {
+  required_providers {
+    hetznerdns = {
+      source = "timohirt/hetznerdns"
+      version = "2.2.0"
+    }
+  }
+}
+
 provider "hetznerdns" {
-  api_token = var.hetzner_token
+  apitoken = var.hetzner_token
+  
 }
 
 data "hetznerdns_zone" "dns_zone" {

@@ -8,3 +8,8 @@ variable "hetzner_token" {
   type        = string
   sensitive   = true
 }
+
+variable "dns_records_file" {
+  description = "Path to the DNS records JSON file."
+  type        = string
+}
