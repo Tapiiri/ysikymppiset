@@ -1,0 +1,17 @@
+name: "Test Terraform Deploy"
+on:
+  push:
+    paths:
+      - '.github/actions/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Terraform Apply Action
+        uses: ./
+        with:
+          hetzner_token: "test-token"  # Mock token for testing
+          domain_name: "example.com"   # Mock domain for testing

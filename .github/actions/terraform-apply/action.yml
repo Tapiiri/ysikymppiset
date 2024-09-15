@@ -1,0 +1,42 @@
+name: 'Run Terraform Apply Action'
+description: 'Deploy infrastructure using Terraform'
+inputs:
+  hetzner_token:
+    description: 'Hetzner API token'
+    required: true
+  domain_name:
+    description: 'Domain name to manage DNS records for'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Debug - Check Terraform Command
+      shell: bash
+      run: 'echo "::notice::Using Terraform command: ${{ env.TERRAFORM_COMMAND:-terraform }}"'
+
+    - name: Terraform Init
+      run: ${{ env.TERRAFORM_COMMAND:-terraform }} init
+      shell: bash
+      working-directory: ./
+
+    - name: Terraform Apply
+      id: apply
+      run: ${{ env.TERRAFORM_COMMAND:-terraform }} apply -auto-approve -input=false
+      shell: bash
+      env:
+        TF_VAR_domain_name: ${{ inputs.domain_name }}
+        TF_VAR_hetzner_token: ${{ inputs.hetzner_token }}
+      working-directory: ./
+
+    - name: Output DNS Record IDs
+      id: output
+      run: echo "::set-output name=dns_record_ids::$(terraform output -json dns_record_ids)"
+      shell: bash
+      working-directory: ./
