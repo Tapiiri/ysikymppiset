@@ -14,29 +14,12 @@ beforeEach(async () => {
             dest: ".github/workflows/test.yml",
           },
           {
-            src: path.resolve(__dirname, "../.github/actions/terraform-apply/action.yml"), // Your action file
+            src: path.resolve(
+              __dirname,
+              "../.github/actions/terraform-apply/action.yml",
+            ), // Your action file
             dest: "/action.yml",
           },
-          {
-            src: path.resolve(__dirname, "../dns_records.json"), // DNS records file
-            dest: "/dns_records.json",
-          },
-          {
-            src: path.resolve(__dirname, "../terraform/main.tf"), // Root Terraform file
-            dest: "/main.tf",
-          },
-          {
-            src: path.resolve(__dirname, "../terraform/variables.tf"), // Root variables file
-            dest: "/variables.tf",
-          },
-          {
-            src: path.resolve(__dirname, "../terraform/hetzner_dns/main.tf"), // Terraform module main file
-            dest: "/hetzner_dns/main.tf",
-          },
-          {
-            src: path.resolve(__dirname, "../terraform/hetzner_dns/variables.tf"), // Terraform module variables file
-            dest: "/hetzner_dns/variables.tf",
-          },          
           {
             src: path.resolve(__dirname, "mock-terraform.sh"), // Mock Terraform script
             dest: "./mock-terraform.sh",
@@ -75,7 +58,9 @@ test("test Terraform Deploy Action", async () => {
     },
     {
       name: "Main Debug - Check Terraform Command",
-      output: expect.stringContaining("Using Terraform command ./mock-terraform.sh"),
+      output: expect.stringContaining(
+        "Using Terraform command ./mock-terraform.sh",
+      ),
       status: 0,
     },
     {
@@ -95,7 +80,9 @@ test("test Terraform Deploy Action", async () => {
     },
     {
       name: "Main Debug - Check DNS Record IDs",
-      output: expect.stringContaining("DNS Record IDs Mock Terraform command: output"),
+      output: expect.stringContaining(
+        "DNS Record IDs Mock Terraform command: output",
+      ),
       status: 0,
     },
     {
