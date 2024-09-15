@@ -1,0 +1,26 @@
+name: 'Deploy'
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow only on pushes to the main branch
+    paths:
+      - 'terraform/**'
+      - '.github/actions/**'
+      - 'dns_records.json'
+
+jobs:
+  setup-dns:
+    runs-on: ubuntu-latest
+    environment: production  # Define the deployment environment
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Terraform Hetzner DNS Action
+        uses: ./.github/actions/terraform-apply
+        with:
+          hetzner_token: ${{ secrets.HETZNER_TOKEN }}
+          domain_name: ${{ env.DOMAIN_NAME }}
+          dns_records_file: './dns_records.json'  # Specify the path to your DNS records file
+          working_directory: './terraform'
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
