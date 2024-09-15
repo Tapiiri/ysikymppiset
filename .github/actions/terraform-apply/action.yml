@@ -1,16 +1,16 @@
-name: 'Run Terraform Apply Action'
-description: 'Deploy infrastructure using Terraform'
+name: "Run Terraform Apply Action"
+description: "Deploy infrastructure using Terraform"
 inputs:
   hetzner_token:
-    description: 'Hetzner API token'
+    description: "Hetzner API token"
     required: true
   domain_name:
-    description: 'Domain name to manage DNS records for'
+    description: "Domain name to manage DNS records forr"
     required: true
   terraform_command:
-    description: 'Terraform command to use'
+    description: "Terraform command to use"
     required: false
-    default: 'terraform'
+    default: "terraform"
 
 runs:
   using: "composite"
@@ -46,15 +46,14 @@ runs:
       env:
         TERRAFORM_COMMAND: ${{ inputs.terraform_command }}
       run: |
-          # Get the output from the terraform command
-          dns_output=$($TERRAFORM_COMMAND output -json dns_record_ids)
+        # Get the output from the terraform command
+        dns_output=$($TERRAFORM_COMMAND output -json dns_record_ids)
 
-          # Set the output for GitHub Actions
-          echo "::set-output name=dns_record_ids::$dns_output"
+        # Set the output for GitHub Actions
+        echo "::set-output name=dns_record_ids::$dns_output"
       shell: bash
       working-directory: ./
 
     - name: Debug - Check DNS Record IDs
       run: echo DNS Record IDs ${{ steps.output.outputs.dns_record_ids }}
       shell: bash
-
