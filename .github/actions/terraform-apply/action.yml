@@ -7,6 +7,9 @@ inputs:
   domain_name:
     description: "Domain name to manage DNS records forr"
     required: true
+  dns_records_file:
+    description: "Path to the DNS records JSON file"
+    required: true
   terraform_command:
     description: "Terraform command to use"
     required: false
@@ -39,6 +42,7 @@ runs:
       env:
         TF_VAR_domain_name: ${{ inputs.domain_name }}
         TF_VAR_hetzner_token: ${{ inputs.hetzner_token }}
+        TF_VAR_dns_records_file: ${{ inputs.dns_records_file }}
       working-directory: ./
 
     - name: Output DNS Record IDs

@@ -1,28 +1,27 @@
-terraform {
-  required_providers {
-    hetznerdns = {
-      source = "timohirt/hetznerdns"
-      version = "2.2.0"
-    }
-  }
-}
-
 provider "hetznerdns" {
-  apitoken = var.hetzner_token
+  api_token = var.hetzner_token
 }
 
 data "hetznerdns_zone" "dns_zone" {
   name = var.domain_name
 }
 
-resource "hetznerdns_record" "web" {
-  zone_id = data.hetznerdns_zone.dns_zone.id
-  name    = "www"
-  value   = "192.168.1.1" # replace with the correct IP address or use your data sources
-  type    = "A"
-  ttl     = 60
+# Read the DNS records from the JSON file using the provided path
+locals {
+  dns_records = jsondecode(file(var.dns_records_file))
 }
 
-output "dns_record_id" {
-  value = hetznerdns_record.web.id
+# Dynamically create DNS records using the JSON data
+resource "hetznerdns_record" "web" {
+  for_each = { for record in local.dns_records : record.name => record }
+
+  zone_id = data.hetznerdns_zone.dns_zone.id
+  name    = each.value.name
+  value   = each.value.value
+  type    = each.value.type
+  ttl     = each.value.ttl
+}
+
+output "dns_record_ids" {
+  value = [for r in hetznerdns_record.web : r.id]
 }
