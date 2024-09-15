@@ -23,7 +23,7 @@ locals {
 
 # Dynamically create DNS records using the JSON data
 resource "hetznerdns_record" "web" {
-  for_each = { for record in local.dns_records : record.name => record }
+  for_each = { for record in local.dns_records : record.value => record }
 
   zone_id = data.hetznerdns_zone.dns_zone.id
   name    = each.value.name

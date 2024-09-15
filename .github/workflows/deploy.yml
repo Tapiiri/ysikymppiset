@@ -9,6 +9,9 @@ on:
       - '.github/actions/**'
       - 'dns_records.json'
 
+env:
+  DOMAIN_NAME: ${{ github.env.DOMAIN_NAME }}
+
 jobs:
   setup-dns:
     runs-on: ubuntu-latest
