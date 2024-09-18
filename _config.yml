@@ -29,6 +29,7 @@ email: your-email@example.com
 # theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
 sass:
   sass_dir: assets/css
@@ -37,6 +38,18 @@ rsvp_link: "https://your-rsvp-link.com"
 gallery_link: "https://your-gallery-link.com"
 show_gallery: false # Change this to true after the event to show the gallery
 
+event:
+  date: "19.10.2024"
+  location: "Tapanilan Työväentalo, Sompiontie 4"
+
+# Available languages
+languages:
+  - code: fi
+    name: FI
+  - code: en
+    name: EN
+
+default_language: fi
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

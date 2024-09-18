@@ -137,6 +137,7 @@ li {
   text-decoration: none;
   font-size: 1.2em;
   text-align: center;
+  margin: auto;
   margin-top: 20px;
   transition: background-color 0.3s ease;
 }
@@ -156,6 +157,7 @@ li {
   background-color: #1a1a1a;
   max-width: 800px; // Limit the width for large screens
   box-sizing: border-box;
+  text-align: center;
 }
 
 // Media queries for responsiveness
@@ -211,4 +213,31 @@ li {
     margin: 15px auto;
     padding: 10px;
   }
+}
+
+.language-switcher {
+  position: fixed;
+  right: 0;
+}
+
+.language-switcher ul {
+  list-style: none;
+  text-align: right;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+}
+
+.language-switcher li {
+  margin: 0 10px;
+}
+
+.language-switcher a {
+  color: white;
+  text-decoration: none;
+}
+
+.language-switcher a.active {
+  font-weight: bold;
+  text-decoration: underline;
 }
