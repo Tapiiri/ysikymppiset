@@ -46,11 +46,30 @@ p {
   height: 80vh; // 80% of viewport height
   text-align: center;
   padding: 50px 20px;
+}
+
+/* Hero background container */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; // 80% of viewport height
+  text-align: center;
+  padding: 50px 20px;
+  height: 80vh; /* Adjust this height as per your design */
   background-image: url("/assets/YSIKYMPPISTEN MAINOS (3).png");
   background-size: max(90vw, 700px) auto; // Ensure the image covers the entire hero section
   background-position: center 20%; // Center the image vertically and horizontally
   background-repeat: no-repeat;
   background-attachment: fixed; // Optional: Makes the background "stick" while scrolling (parallax effect)
+  z-index: -1; /* Place the background behind the hero content */
+  opacity: 0;
+  transition: opacity 0.6s ease-out; /* Fade-in for the background */
 }
 
 .hero p {
@@ -218,6 +237,7 @@ li {
 .language-switcher {
   position: fixed;
   right: 0;
+  z-index: 2;
 }
 
 .language-switcher ul {
@@ -278,38 +298,20 @@ li {
   }
 }
 
-/* Apply background animation */
-.hero {
-  animation: fadeInBackground 1s ease-out forwards; /* Animates in 1 second */
-}
-
-/* Apply title animation with delay */
+/* Apply title animation */
 .party-title {
-  animation: slideInTitle 1.2s ease-out forwards;
-  animation-delay: 0.5s; /* Delay by 0.5 seconds after the hero loads */
-  opacity: 0; /* Ensures it starts hidden */
+  opacity: 0;
   transform: translateY(-50px);
 }
 
-/* Apply paragraph animations with staggered delays */
+/* Apply paragraph animation */
 .hero p,
 .invitation,
 .rsvp {
   animation: fadeInParagraphs 1.5s ease-out forwards;
   opacity: 0;
-  transform: translateY(20px);
-}
-
-.hero p {
-  animation-delay: 1s; /* Delay for paragraphs to appear after title */
-}
-
-.invitation {
-  animation-delay: 1.5s; /* Staggered appearance of invitation section */
-}
-
-.rsvp {
-  animation-delay: 2s; /* RSVP form appears last */
+  transform: translateY(20px); /* Start hidden */
+  transition: all 0.5s ease-out;
 }
 
 @media screen and (max-width: 768px) {
@@ -317,12 +319,6 @@ li {
     animation: slideInTitle 1.2s ease-out forwards;
     opacity: 0;
     transform: translateY(-40px);
-  }
-
-  .hero p,
-  .invitation,
-  .rsvp {
-    animation: fadeInParagraphs 1.2s ease-out forwards;
   }
 }
 
@@ -336,4 +332,24 @@ li {
   .rsvp {
     animation: fadeInParagraphs 1s ease-out forwards;
   }
+}
+
+body.page-loaded .party-title {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideInTitle 1.2s ease-out forwards; /* Slight delay to sync with background */
+}
+
+body.page-loaded .hero p,
+body.page-loaded .invitation,
+body.page-loaded .rsvp {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInParagraphs 1.2s ease-out forwards;
+}
+
+/* Animation triggers */
+body.page-loaded .hero-bg {
+  animation: fadeInParagraphs 1.5s ease-out forwards;
+  opacity: 1; /* Trigger the background fade-in independently */
 }

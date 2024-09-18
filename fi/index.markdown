@@ -4,6 +4,7 @@ title: Syntymäpäiväjuhlat
 lang: fi
 ---
 
+<div class="hero-bg"></div>  <!-- New hero background container -->
 <div class="hero">
   <img src="/assets/YSIKYMPPISTEN MAINOS (2).png" alt="Syntymäpäiväjuhlat" class="party-title">
   <p>Valmistaudu unohtumattomiin juhliin, täynnä hauskaa, pelejä ja yllätyksiä!</p>

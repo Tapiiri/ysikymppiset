@@ -4,6 +4,7 @@ title: Birthday Party
 lang: en
 ---
 
+<div class="hero-bg"></div>  <!-- New hero background container -->
 <div class="hero">
   <img src="/assets/YSIKYMPPISTEN MAINOS (2).png" alt="Birthday Party Title" class="party-title">
   <p>Get ready for an unforgettable celebration filled with fun, games, and surprises!</p>
