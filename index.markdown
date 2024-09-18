@@ -4,7 +4,7 @@ title: Birthday Party
 ---
 
 <div class="hero">
-  <h1>Welcome to the Birthday Party!</h1>
+  <img src="/assets/YSIKYMPPISTEN MAINOS (2).png" alt="Birthday Party Title" class="party-title">
   <p>Get ready for an unforgettable celebration filled with fun, games, and surprises!</p>
   <p><strong>Date:</strong> 19.10</p>
   <p><strong>Location:</strong> Tapaniilan Työväentalo, Sompiontie 4</p>

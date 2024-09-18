@@ -1,45 +1,124 @@
 ---
 ---
 
-// Neon-style colors based on the invitation design
+// Neon-style colors
 $neon-pink: #ff69b4;
 $neon-blue: #00ffff;
 $dark-background: #000000;
 
+// Base styles
 body {
   background-color: $dark-background;
   color: white;
-  font-family: "Press Start 2P", sans-serif; // Pixel style font
+  font-family: "Press Start 2P", sans-serif; // Pixel-style font
   padding: 20px;
-}
-
-.hero {
-  text-align: center;
-  margin-top: 50px;
+  margin: 0;
 }
 
 h1 {
   color: $neon-pink;
-  font-size: 3em;
+  font-size: 2.5em;
   text-shadow:
     0 0 10px $neon-pink,
     0 0 20px $neon-pink;
+  margin-top: 0;
+  text-align: center;
+}
+
+h2 {
+  color: $neon-blue;
+  text-shadow: 0 0 5px $neon-blue;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 p {
   color: $neon-blue;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  text-align: center;
 }
 
-.invitation {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid $neon-blue;
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; // 80% of viewport height
+  text-align: center;
+  padding: 50px 20px;
+  background-image: url("/assets/YSIKYMPPISTEN MAINOS (3).png");
+  background-size: max(90vw, 700px) auto; // Ensure the image covers the entire hero section
+  background-position: center 20%; // Center the image vertically and horizontally
+  background-repeat: no-repeat;
+  background-attachment: fixed; // Optional: Makes the background "stick" while scrolling (parallax effect)
+}
+
+.hero p {
+  color: $neon-blue;
+  font-size: 1.5em;
+  margin: 20px 0;
+  text-shadow:
+    -1px -1px 0px rgba(0, 0, 0, 1),
+    /* Top-left shadow for outline */ 1px -1px 0px rgba(0, 0, 0, 1),
+    /* Top-right shadow for outline */ -1px 1px 0px rgba(0, 0, 0, 1),
+    /* Bottom-left shadow for outline */ 1px 1px 0px rgba(0, 0, 0, 1),
+    /* Bottom-right shadow for outline */ 2px 2px 5px rgba(0, 0, 0, 0.7); /* The regular soft shadow */
+}
+
+h1 {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); // Add semi-transparent background to the title as well
+  padding: 20px;
   border-radius: 10px;
+  text-shadow: none; // Text shadow not needed when using a background
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    background-size: contain; // Make sure the image scales properly on smaller devices
+    background-position: top 20%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    background-size: cover; // Ensure portrait images scale well on very small screens
+    background-position: top 20%;
+  }
+}
+
+.party-title {
+  width: 100%; // Ensure it takes up the full width of the container
+  height: auto; // Keep the height dynamic to maintain aspect ratio
+  max-width: min(80%, 95vh);
+  max-height: 100vh;
+  margin: 0 auto 20px; // Center the image and add bottom margin
+  object-fit: cover; // Ensure the image covers the defined area
+  overflow: hidden;
+  height: 80vh; // Show only 80% of the image's height, cropping 20% from the bottom
+  min-height: 60vh;
+}
+
+@media screen and (max-width: 768px) {
+  .party-title {
+    max-width: min(90%, 95vh); // Make the image larger on smaller screens
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .party-title {
+    max-width: min(95%, 95vh);
+  }
 }
 
 ul {
   list-style-type: none;
+  padding-left: 0;
+  text-align: center;
 }
 
 li {
@@ -48,10 +127,10 @@ li {
   margin: 5px 0;
 }
 
-// Button styles for RSVP and Gallery
+// Button styles
 .button {
   display: inline-block;
-  background-color: #ff69b4;
+  background-color: $neon-pink;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -66,28 +145,70 @@ li {
   background-color: #ff1493;
 }
 
-// Styling sections for better readability
+// Responsive container for sections
 .invitation,
 .rsvp,
 .gallery {
-  margin: 40px 0;
+  margin: 40px auto;
   padding: 20px;
-  border: 2px solid #00ffff;
+  border: 2px solid $neon-blue;
   border-radius: 10px;
   background-color: #1a1a1a;
+  max-width: 800px; // Limit the width for large screens
+  box-sizing: border-box;
 }
 
-h2 {
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
+// Media queries for responsiveness
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p,
+  li {
+    font-size: 1.1em;
+  }
+
+  .button {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+
+  .invitation,
+  .rsvp,
+  .gallery {
+    margin: 20px auto;
+    padding: 15px;
+  }
 }
 
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
 
-ul li {
-  margin: 10px 0;
-  font-size: 1.2em;
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p,
+  li {
+    font-size: 1em;
+  }
+
+  .button {
+    font-size: 0.9em;
+    padding: 6px 12px;
+  }
+
+  .invitation,
+  .rsvp,
+  .gallery {
+    margin: 15px auto;
+    padding: 10px;
+  }
 }
