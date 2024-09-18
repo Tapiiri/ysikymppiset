@@ -26,9 +26,17 @@ url: "https://ysikymppiset.fi" # your GitHub Pages URL
 email: your-email@example.com
 
 # Build settings
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
+
+sass:
+  sass_dir: assets/css
+
+rsvp_link: "https://your-rsvp-link.com"
+gallery_link: "https://your-gallery-link.com"
+show_gallery: false # Change this to true after the event to show the gallery
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

@@ -1,0 +1,93 @@
+---
+---
+
+// Neon-style colors based on the invitation design
+$neon-pink: #ff69b4;
+$neon-blue: #00ffff;
+$dark-background: #000000;
+
+body {
+  background-color: $dark-background;
+  color: white;
+  font-family: "Press Start 2P", sans-serif; // Pixel style font
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  color: $neon-pink;
+  font-size: 3em;
+  text-shadow:
+    0 0 10px $neon-pink,
+    0 0 20px $neon-pink;
+}
+
+p {
+  color: $neon-blue;
+  font-size: 1.5em;
+}
+
+.invitation {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid $neon-blue;
+  border-radius: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  color: $neon-blue;
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+// Button styles for RSVP and Gallery
+.button {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ff1493;
+}
+
+// Styling sections for better readability
+.invitation,
+.rsvp,
+.gallery {
+  margin: 40px 0;
+  padding: 20px;
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+}
+
+h2 {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
