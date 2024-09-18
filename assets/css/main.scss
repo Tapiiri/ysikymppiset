@@ -241,3 +241,99 @@ li {
   font-weight: bold;
   text-decoration: underline;
 }
+
+/* Fade-in animation for the background image */
+@keyframes fadeInBackground {
+  0% {
+    opacity: 0;
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Reset zoom */
+  }
+}
+
+/* Slide-in animation for the event title */
+@keyframes slideInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px); /* Start above the viewport */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End in the correct position */
+  }
+}
+
+/* Fade-in animation for the paragraphs */
+@keyframes fadeInParagraphs {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start below the viewport */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End in the correct position */
+  }
+}
+
+/* Apply background animation */
+.hero {
+  animation: fadeInBackground 1s ease-out forwards; /* Animates in 1 second */
+}
+
+/* Apply title animation with delay */
+.party-title {
+  animation: slideInTitle 1.2s ease-out forwards;
+  animation-delay: 0.5s; /* Delay by 0.5 seconds after the hero loads */
+  opacity: 0; /* Ensures it starts hidden */
+  transform: translateY(-50px);
+}
+
+/* Apply paragraph animations with staggered delays */
+.hero p,
+.invitation,
+.rsvp {
+  animation: fadeInParagraphs 1.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero p {
+  animation-delay: 1s; /* Delay for paragraphs to appear after title */
+}
+
+.invitation {
+  animation-delay: 1.5s; /* Staggered appearance of invitation section */
+}
+
+.rsvp {
+  animation-delay: 2s; /* RSVP form appears last */
+}
+
+@media screen and (max-width: 768px) {
+  .party-title {
+    animation: slideInTitle 1.2s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  .hero p,
+  .invitation,
+  .rsvp {
+    animation: fadeInParagraphs 1.2s ease-out forwards;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .party-title {
+    animation: slideInTitle 1s ease-out forwards;
+  }
+
+  .hero p,
+  .invitation,
+  .rsvp {
+    animation: fadeInParagraphs 1s ease-out forwards;
+  }
+}
