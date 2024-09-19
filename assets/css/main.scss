@@ -46,6 +46,7 @@ p {
   height: 80vh; // 80% of viewport height
   text-align: center;
   padding: 50px 20px;
+  margin-bottom: 50px;
 }
 
 /* Hero background container */
@@ -60,7 +61,6 @@ p {
   align-items: center;
   height: 80vh; // 80% of viewport height
   text-align: center;
-  padding: 50px 20px;
   height: 80vh; /* Adjust this height as per your design */
   background-image: url("/assets/YSIKYMPPISTEN MAINOS (3).png");
   background-size: max(90vw, 700px) auto; // Ensure the image covers the entire hero section
@@ -74,8 +74,8 @@ p {
 
 .hero p {
   color: $neon-blue;
-  font-size: 1.5em;
-  margin: 20px 0;
+  font-size: 1.2em;
+  margin: 20px 20px;
   text-shadow:
     -1px -1px 0px rgba(0, 0, 0, 1),
     /* Top-left shadow for outline */ 1px -1px 0px rgba(0, 0, 0, 1),
