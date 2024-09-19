@@ -34,13 +34,14 @@ plugins:
 sass:
   sass_dir: assets/css
 
-rsvp_link: "https://your-rsvp-link.com"
+rsvp_link: "https://tally.so/r/mOLbWA"
 gallery_link: "https://your-gallery-link.com"
 show_gallery: false # Change this to true after the event to show the gallery
 
 event:
   date: "19.10.2024"
   location: "Tapanilan Työväentalo, Sompiontie 4"
+  location_url: "https://maps.app.goo.gl/t45yFXQ9PhiZGAQY9"
 
 # Available languages
 languages:
