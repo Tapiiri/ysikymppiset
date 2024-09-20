@@ -26,6 +26,7 @@ lang: fi
   </ul>
   <p>Paikalla on valokuvaaja, joka ikuistaa pyynnöstänne ikoniset juhla-asut!</p>
   <p>Matka jatkuu puoliltaöin jatkoille lähistölle, jatkopaikka päivittyy myöhemmin!</p>
+  <p>Pyydämme, että ette tuo onnittelukukkia, sillä ne eivät todennäköisesti selviä jatkoista.</p>
   <p><strong>Saapumisesta autolla:</strong> työväentalon yhteydessä rajatusti parkkitilaa, enemmän paikkoja radan toisella puolella, josta tunnelin kautta kulkuyhteys 70m</p>
 </div>
 

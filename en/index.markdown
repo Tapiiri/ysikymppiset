@@ -25,6 +25,7 @@ lang: en
   </ul>
   <p>A photographer will be present to capture your iconic party outfits!</p>
   <p>The journey continues at midnight, as we move to an after-party nearby. The after-party location will be updated later!</p>
+  <p>We kindly ask you not to bring congratulatory flowers, as they are unlikely to survive the after-party.</p>
   <p><strong>Arriving by car:</strong> Limited parking is available at the venue. Additional parking can be found on the other side of the tracks, with a 70m walk through the tunnel.</p>
 </div>
 
