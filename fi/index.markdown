@@ -15,12 +15,17 @@ lang: fi
 
 <div class="invitation">
   <h2>Tapahtuman tiedot</h2>
-  <p>Tule pukeutuneena johonkin seuraavista:</p>
+  <p>Juhlapaikan ovet avautuvat klo 18.</p>
+  <p>Tarjoamme alkumaljat ja cocktailaineksia, joita otetaan myös mielellään vastaan. Janoisemmille kuitenkin OPM! Lisäksi tarjolla on naposteltavaa ja synttärikakkua.</p>
+  <p>Muistathan pukukoodin, joka määräytyy kutsuvan sankarin mukaan:</p>
   <ul>
-    <li><strong>Raakel:</strong> Star Wars -hahmo</li>
-    <li><strong>Ilmari:</strong> Videopelihahmo</li>
-    <li><strong>Pauliina:</strong> Hahmo, jonka nimi alkaa samalla kirjaimella kuin oma nimesi</li>
+    <li><strong>Raakel:</strong> Star Wars</li>
+    <li><strong>Ilmari:</strong> Videopelit</li>
+    <li><strong>Pauliina:</strong> Mikä tahansa oman nimen alkukirjaimella alkava</li>
   </ul>
+  <p>Paikalla on valokuvaaja, joka ikuistaa pyynnöstänne ikoniset juhla-asut!</p>
+  <p>Matka jatkuu puoliltaöin jatkoille lähistölle, jatkopaikka päivittyy myöhemmin!</p>
+  <p><strong>Saapumisesta autolla:</strong> työväentalon yhteydessä rajatusti parkkitilaa, enemmän paikkoja radan toisella puolella, josta tunnelin kautta kulkuyhteys 70m</p>
 </div>
 
 <div class="rsvp">
