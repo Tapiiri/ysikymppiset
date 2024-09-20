@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Syntymäpäiväjuhlat
+title: Ysikymppiset
 lang: fi
 ---
 
