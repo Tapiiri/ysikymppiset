@@ -28,5 +28,17 @@
     "value": "ysikymppiset.github.io",
     "type": "CNAME",
     "ttl": 3600
+  },
+  {
+    "name": "_glideauthid.admin",
+    "value": "x2P5uXsC3sl9l1hjWilK",
+    "type": "TXT",
+    "ttl": 600
+  },
+  {
+    "name": "admin",
+    "value": "custom.glideapps.com",
+    "type": "CNAME",
+    "ttl": 600
   }
 ]
