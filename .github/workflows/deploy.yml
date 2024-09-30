@@ -12,7 +12,7 @@ on:
       - .github/actions/terraform-apply/action.yml
 
 env:
-  DOMAIN_NAME: ${{ vars.DOMAIN_NAME }} || ${{ github.env.DOMAIN_NAME }}
+  DOMAIN_NAME: ${{ vars.DOMAIN_NAME || github.env.DOMAIN_NAME }}
 
 jobs:
   setup-dns:
