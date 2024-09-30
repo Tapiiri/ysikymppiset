@@ -37,7 +37,7 @@
   },
   {
     "name": "admin",
-    "value": "custom.glideapps.com",
+    "value": "custom.glideapps.com.",
     "type": "CNAME",
     "ttl": 600
   }
