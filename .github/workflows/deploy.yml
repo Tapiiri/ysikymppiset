@@ -8,7 +8,7 @@ on:
       - 'terraform/**'
       - '.github/actions/**'
       - 'dns_records.json'
-      - .github/workflow/deploy.yml
+      - .github/workflows/deploy.yml
       - .github/actions/terraform-apply/action.yml
 
 env:
