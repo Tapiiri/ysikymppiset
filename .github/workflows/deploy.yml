@@ -8,6 +8,8 @@ on:
       - 'terraform/**'
       - '.github/actions/**'
       - 'dns_records.json'
+      - .github/workflow/deploy.yml
+      - .github/actions/terraform-apply/action.yml
 
 env:
   DOMAIN_NAME: ${{ vars.DOMAIN_NAME }} || ${{ github.env.DOMAIN_NAME }}
