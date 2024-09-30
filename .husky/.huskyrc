@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -x                                         # │ turn on shell‐debug tracing
+
+
+echo "🐛 [huskyrc debug] Starting .huskyrc"
+echo "🐛 [huskyrc debug] SHELL=$SHELL"
+echo "🐛 [huskyrc debug] USER=$USER"
+echo "🐛 [huskyrc debug] PWD=$(pwd)"
+echo "🐛 [huskyrc debug] PATH=$PATH"
+echo "🐛 [huskyrc debug] NVM_DIR=$NVM_DIR"
+
+# 1) Ensure NVM_DIR is set (falls back to default location if empty)
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+echo "🐛 [huskyrc debug] Resolved NVM_DIR=$NVM_DIR"
+
+# 2) Does nvm.sh exist?
+if [ -s "${NVM_DIR}/nvm.sh" ]; then
+  echo "🐛 [huskyrc debug] Found nvm.sh, sourcing it…"
+  # shellcheck source=/dev/null
+  . "${NVM_DIR}/nvm.sh"
+  echo "🐛 [huskyrc debug] After source: command -v nvm=$(command -v nvm)"
+else
+  echo "🐛 [huskyrc debug] ⚠️ nvm.sh not found at ${NVM_DIR}/nvm.sh"
+fi
+
+# 3) Use .nvmrc if present
+if [ -f ".nvmrc" ]; then
+  echo "🐛 [huskyrc debug] .nvmrc contents: '$(head -n1 .nvmrc)'"
+  nvm use --silent || echo "🐛 [huskyrc debug] ⚠️ nvm use failed"
+  echo "🐛 [huskyrc debug] After nvm use: command -v node=$(command -v node)"
+else
+  echo "🐛 [huskyrc debug] No .nvmrc file found"
+fi
+
+echo "🐛 [huskyrc debug] Finished loading nvm"
+set +x                                         # │ turn off tracing if you don’t want it for the rest

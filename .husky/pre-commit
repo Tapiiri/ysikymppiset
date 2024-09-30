@@ -1,3 +1,4 @@
+. "$(dirname -- "$0")/nvm.sh"
 git diff --cached --name-only --diff-filter=ACMR -z | xargs -0 prettier --write --ignore-unknown
 git update-index --again
 npm test
